@@ -1,6 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <regex>
 
 #include "maps.h"
 
@@ -25,7 +23,7 @@ int main(int argc, char* argv[]) {
 //
 //    }
 
-    readmaps(4256);
+    readmaps(atoi(argv[1]));
 
     return 0;
 }
