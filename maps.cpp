@@ -22,7 +22,6 @@ bool readmaps(pid_t target){
         char read, write, exec, cow, *filename;
         int offset, dev_major, dev_minor, inode;
         region_type_t type = REGION_TYPE_MISC;
-        region_t *map = NULL;
 
         std::cout << line << std::endl;
         if (sscanf(line, "%lx-%lx %c%c%c%c %x %x:%x %u %[^\n]", &start, &end, &read,
@@ -35,13 +34,12 @@ bool readmaps(pid_t target){
           else if (!strcmp(filename, "[stack]"))
               type = REGION_TYPE_STACK;
 
-
-          region_t region = {start, size, type/*, filename*/};
+          region_t region = {start, size, type, filename};
 
             std::cout << "Start is at: " << region.start << std::endl
             << "With size of: " << region.size << std::endl
-            << "Type: " << region.type << std::endl;
-            //<< "And filename: " << filename << std::endl;
+            << "Type: " << region.type << std::endl
+            << "And filename: " << region.filename << std::endl << std::endl;
         }
     }
 }

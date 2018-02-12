@@ -15,7 +15,7 @@ typedef struct {
     unsigned long start;
     unsigned long size;
     region_type_t type;
-    char filename[1];
+    char * filename;
 } region_t;
 
 bool readmaps(pid_t target);
