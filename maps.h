@@ -1,8 +1,6 @@
 #ifndef HACKENGINE_MAPS_H
 #define HACKENGINE_MAPS_H
 
-#include <sys/types.h>
-
 typedef enum {
     REGION_TYPE_MISC,
     REGION_TYPE_CODE,

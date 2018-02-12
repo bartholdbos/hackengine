@@ -4,6 +4,7 @@
 #include <string.h>
 
 #include "maps.h"
+#include "mem.h"
 
 bool readmaps(pid_t target){
     FILE *maps;
@@ -27,14 +28,19 @@ bool readmaps(pid_t target){
         if (sscanf(line, "%lx-%lx %c%c%c%c %x %x:%x %u %[^\n]", &start, &end, &read,
         &write, &exec, &cow, &offset, &dev_major, &dev_minor, &inode, filename) >= 6){
 
-          unsigned long size = end -start;
+            unsigned long size = end -start;
 
-          if (!strcmp(filename, "[heap]"))
-              type = REGION_TYPE_HEAP;
-          else if (!strcmp(filename, "[stack]"))
-              type = REGION_TYPE_STACK;
+            if (!strcmp(filename, "[heap]"))
+                type = REGION_TYPE_HEAP;
+            else if (!strcmp(filename, "[stack]"))
+                type = REGION_TYPE_STACK;
 
-          region_t region = {start, size, type, filename};
+            region_t region = {start, size, type, filename};
+
+            for(int i = 0; i < size; i++){
+              readMem(target, start + i);
+            }
+
 
             std::cout << "Start is at: " << region.start << std::endl
             << "With size of: " << region.size << std::endl
@@ -42,4 +48,7 @@ bool readmaps(pid_t target){
             << "And filename: " << region.filename << std::endl << std::endl;
         }
     }
+    //release memory allocated
+    free(line);
+    fclose(maps);
 }
