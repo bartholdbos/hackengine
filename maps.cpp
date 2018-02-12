@@ -1,6 +1,7 @@
 #include <sys/types.h>
 #include <cstdio>
 #include <iostream>
+#include <string.h>
 
 #include "maps.h"
 
@@ -25,7 +26,18 @@ bool readmaps(pid_t target){
 
         std::cout << line << std::endl;
         if (sscanf(line, "%lx-%lx %c%c%c%c %x %x:%x %u %[^\n]", &start, &end, &read,
-                  &write, &exec, &cow, &offset, &dev_major, &dev_minor, &inode, filename) >= 6){
+        &write, &exec, &cow, &offset, &dev_major, &dev_minor, &inode, filename) >= 6){
+
+          unsigned long size = end -start;
+
+          if (!strcmp(filename, "[heap]"))
+              type = REGION_TYPE_HEAP;
+          else if (!strcmp(filename, "[stack]"))
+              type = REGION_TYPE_STACK;
+
+
+          struct region_t region = {start, size, type};
+
             std::cout << start << std::endl;
         }
     }
