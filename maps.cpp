@@ -36,9 +36,12 @@ bool readmaps(pid_t target){
               type = REGION_TYPE_STACK;
 
 
-          struct region_t region = {start, size, type};
+          region_t region = {start, size, type/*, filename*/};
 
-            std::cout << start << std::endl;
+            std::cout << "Start is at: " << region.start << std::endl
+            << "With size of: " << region.size << std::endl
+            << "Type: " << region.type << std::endl;
+            //<< "And filename: " << filename << std::endl;
         }
     }
 }
