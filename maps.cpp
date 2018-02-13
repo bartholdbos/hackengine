@@ -37,9 +37,7 @@ bool readmaps(pid_t target){
 
             region_t region = {start, size, type, filename};
 
-
             readMem(target, start, size);
-
 
             std::cout << "Start is at: " << region.start << std::endl
             << "With size of: " << region.size << std::endl

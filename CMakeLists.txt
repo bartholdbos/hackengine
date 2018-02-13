@@ -3,4 +3,4 @@ project(hackengine)
 
 set(CMAKE_CXX_STANDARD 11)
 
-add_executable(hackengine main.cpp maps.cpp maps.h)
+add_executable(hackengine main.cpp maps.cpp maps.h mem.h)
