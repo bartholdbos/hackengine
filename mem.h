@@ -1,3 +1,5 @@
+#pragma once
+
 char* readMem(pid_t target, unsigned long memLocation){
   FILE *mem;
   char name[32], *line = NULL;

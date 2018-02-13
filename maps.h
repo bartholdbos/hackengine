@@ -1,5 +1,4 @@
-#ifndef HACKENGINE_MAPS_H
-#define HACKENGINE_MAPS_H
+#pragma once
 
 typedef enum {
     REGION_TYPE_MISC,
@@ -17,5 +16,3 @@ typedef struct {
 } region_t;
 
 bool readmaps(pid_t target);
-
-#endif //HACKENGINE_MAPS_H
