@@ -1,19 +1,18 @@
 #pragma once
 #include <fstream>
 
-int readMem(pid_t target, unsigned long start, unsigned long size) {
-    std::fstream mem;
+char* readMap(pid_t target, unsigned long start, unsigned long size) {
+    std::ifstream mem;
     char name[128];
-    char data[4];
+    char *data = new char[size];
 
     sprintf(name, "/proc/%u/mem", target);
 
     mem.open(name);
 
     mem.seekg(start);
-    mem.read(data, 4);
-
-    std::cout << data << std::endl;
+    mem.read(data, size);
 
     mem.close();
+    return data;
 }

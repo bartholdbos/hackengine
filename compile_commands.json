@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/nikita/Documents/hackengine",
+  "command": "/usr/bin/c++      -std=gnu++11 -o CMakeFiles/hackengine.dir/main.cpp.o -c /home/nikita/Documents/hackengine/main.cpp",
+  "file": "/home/nikita/Documents/hackengine/main.cpp"
+},
+{
+  "directory": "/home/nikita/Documents/hackengine",
+  "command": "/usr/bin/c++      -std=gnu++11 -o CMakeFiles/hackengine.dir/maps.cpp.o -c /home/nikita/Documents/hackengine/maps.cpp",
+  "file": "/home/nikita/Documents/hackengine/maps.cpp"
+}
+]

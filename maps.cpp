@@ -5,6 +5,7 @@
 
 #include "maps.h"
 #include "mem.h"
+#include "findpointers.h"
 
 bool readmaps(pid_t target){
     FILE *maps;
@@ -37,7 +38,11 @@ bool readmaps(pid_t target){
 
             region_t region = {start, size, type, filename};
 
-            readMem(target, start, size);
+            char *data = new char[size];
+
+            data = readMap(target, start, size);
+            // std::cout << data <<std::endl;
+            //findPointers("130ce50", region, data);
 
             std::cout << "Start is at: " << region.start << std::endl
             << "With size of: " << region.size << std::endl
