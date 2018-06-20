@@ -1,10 +1,9 @@
 #pragma once
 #include <fstream>
 
-char* readMap(pid_t target, unsigned long start, unsigned long size) {
+char* readMap(pid_t target, unsigned long start, unsigned long size, char *data) {
     std::ifstream mem;
     char name[128];
-    char *data = new char[size];
 
     sprintf(name, "/proc/%u/mem", target);
 
@@ -12,7 +11,6 @@ char* readMap(pid_t target, unsigned long start, unsigned long size) {
 
     mem.seekg(start);
     mem.read(data, size);
-
     mem.close();
     return data;
 }
