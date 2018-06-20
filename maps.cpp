@@ -39,11 +39,9 @@ bool readmaps(pid_t target){
             region_t region = {start, size, type, filename};
 
             char data[size];
-
             readMap(target, start, size, data);
 
-
-            //findPointers("130ce50", region, data);
+            findPointers("130ce50", region, data);
 
             std::cout << "Start is at: " << region.start << std::endl
             << "With size of: " << region.size << std::endl
